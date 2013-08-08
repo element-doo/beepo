@@ -11,6 +11,12 @@ object Core extends Build {
     Seq(),
     Seq()
   ) settings (
-    Web.settings(9630): _*
+    Web.settings(9630) ++
+    Seq(
+      unmanagedSourceDirectories in Compile <<= (scalaSource in Compile) { mainSource =>
+        val generatedSource = mainSource.getParentFile.getParentFile / "generated" / "scala"
+        mainSource :: generatedSource :: Nil
+      }
+    ): _*
   )
 }
