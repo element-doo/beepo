@@ -20,5 +20,6 @@ trait Dependencies {
   val etbUtil       = "hr.element.etb"                %% "etb-util"        % "0.2.19"
 
   // Other
-  val dispatch = "net.databinder.dispatch" %% "dispatch-core" % "0.11.0"
+  val dispatch = "net.databinder.dispatch" %% "dispatch-core"  % "0.11.0"
+  val javaMail = "javax.mail"              %  "javax.mail-api" % "1.5.0"
 }

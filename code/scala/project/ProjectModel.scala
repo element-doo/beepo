@@ -6,7 +6,7 @@ object Model extends Build with BuildHelper {
     project("Model-Interfaces-Generated")
     inject(
       ngsInterfaces
-    , jacksonAnnotations 
+    , jacksonAnnotations
     )
   )
 
@@ -21,7 +21,8 @@ object Model extends Build with BuildHelper {
   lazy val interfacesPlus = (
     project("Model-Interfaces-Plus")
     inject(
-      Model.interfacesGenerated
+      javaMail
+    , Model.interfacesGenerated
     )
   )
 
