@@ -1,7 +1,6 @@
 module Security
 {
-  root User(name)
-  {
+  root User(name) {
     String name;
     String password;
   }

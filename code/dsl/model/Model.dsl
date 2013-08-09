@@ -1,7 +1,6 @@
 module Model
 {
-  root Task(ID)
-  {
+  root Task(ID) {
     GUID       ID;
     String?    requestID { unique; }
     XML        payload;
