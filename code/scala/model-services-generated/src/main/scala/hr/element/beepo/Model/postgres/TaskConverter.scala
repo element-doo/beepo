@@ -19,7 +19,7 @@ object TaskConverter {
     , ID = PGUUIDConverter.fromPGString(items(IDPos))
     , requestID = if (items(requestIDPos) != null && items(requestIDPos).nonEmpty) Some(items(requestIDPos)) else None
     , payload = PGElemConverter.fromPGString(items(payloadPos))
-    , receivedAt = PGDateTimeConverter.fromPGString(items(receivedAtPos))
+    , createdAt = PGDateTimeConverter.fromPGString(items(createdAtPos))
     )
   }
 
@@ -31,7 +31,7 @@ object TaskConverter {
     , ID = PGUUIDConverter.fromPGString(items(IDPosExtended))
     , requestID = if (items(requestIDPosExtended) != null && items(requestIDPosExtended).nonEmpty) Some(items(requestIDPosExtended)) else None
     , payload = PGElemConverter.fromPGString(items(payloadPosExtended))
-    , receivedAt = PGDateTimeConverter.fromPGString(items(receivedAtPosExtended))
+    , createdAt = PGDateTimeConverter.fromPGString(items(createdAtPosExtended))
     )
   }
 
@@ -41,7 +41,7 @@ object TaskConverter {
     items(IDPos) = PGUUIDConverter.toPGString(item.ID)
     items(requestIDPos) = if (item.requestID.isDefined) item.requestID.get else null
     items(payloadPos) = PGElemConverter.toPGString(item.payload)
-    items(receivedAtPos) = PGDateTimeConverter.toPGString(item.receivedAt)
+    items(createdAtPos) = PGDateTimeConverter.toPGString(item.createdAt)
     PGRecord.pack(items)
   }
 
@@ -51,7 +51,7 @@ object TaskConverter {
     items(IDPosExtended) = PGUUIDConverter.toPGString(item.ID)
     items(requestIDPosExtended) = if (item.requestID.isDefined) item.requestID.get else null
     items(payloadPosExtended) = PGElemConverter.toPGString(item.payload)
-    items(receivedAtPosExtended) = PGDateTimeConverter.toPGString(item.receivedAt)
+    items(createdAtPosExtended) = PGDateTimeConverter.toPGString(item.createdAt)
     PGRecord.pack(items)
   }
 
@@ -94,13 +94,13 @@ object TaskConverter {
       case Some(index) => payloadPosExtended = index - 1
       case None => logger.error("""Couldn't find column "payload" in type Model.Task. Check if database is out of sync with code!""")
     }
-    postgresUtils.getIndexes("Model", "Task_entity").get("receivedAt") match {
-      case Some(index) => receivedAtPos = index - 1
-      case None => logger.error("""Couldn't find column "receivedAt" in type Model.Task_entity. Check if database is out of sync with code!""")
+    postgresUtils.getIndexes("Model", "Task_entity").get("createdAt") match {
+      case Some(index) => createdAtPos = index - 1
+      case None => logger.error("""Couldn't find column "createdAt" in type Model.Task_entity. Check if database is out of sync with code!""")
     }
-    postgresUtils.getIndexes("Model", "-ngs_Task_type-").get("receivedAt") match {
-      case Some(index) => receivedAtPosExtended = index - 1
-      case None => logger.error("""Couldn't find column "receivedAt" in type Model.Task. Check if database is out of sync with code!""")
+    postgresUtils.getIndexes("Model", "-ngs_Task_type-").get("createdAt") match {
+      case Some(index) => createdAtPosExtended = index - 1
+      case None => logger.error("""Couldn't find column "createdAt" in type Model.Task. Check if database is out of sync with code!""")
     }
   }
 
@@ -118,6 +118,6 @@ object TaskConverter {
   private var requestIDPosExtended = -1
   private var payloadPos = -1
   private var payloadPosExtended = -1
-  private var receivedAtPos = -1
-  private var receivedAtPosExtended = -1
+  private var createdAtPos = -1
+  private var createdAtPosExtended = -1
 }

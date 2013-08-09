@@ -10,7 +10,7 @@ class Task private(
   , private var _ID: java.util.UUID
   , private var _requestID: Option[String]
   , private var _payload: scala.xml.Elem
-  , private var _receivedAt: org.joda.time.DateTime
+  , private var _createdAt: org.joda.time.DateTime
   ) extends IIdentifiable
     with Serializable {
 
@@ -74,16 +74,16 @@ class Task private(
 
   }
 
-  @JsonGetter("receivedAt")
-  def receivedAt = {
+  @JsonGetter("createdAt")
+  def createdAt = {
 
-    _receivedAt
+    _createdAt
   }
 
-  def receivedAt_= (value: org.joda.time.DateTime) {
+  def createdAt_= (value: org.joda.time.DateTime) {
     //TODO missing primitive type distinction require(value ne null)
 
-    _receivedAt = value
+    _createdAt = value
 
   }
 
@@ -93,9 +93,9 @@ class Task private(
   , @JsonProperty("ID") ID: java.util.UUID
   , @JsonProperty("requestID") requestID: Option[String]
   , @JsonProperty("payload") payload: scala.xml.Elem
-  , @JsonProperty("receivedAt") receivedAt: org.joda.time.DateTime
+  , @JsonProperty("createdAt") createdAt: org.joda.time.DateTime
   ) =
-    this(_locator = Some(_locator), _URI = URI, _ID = ID, _requestID = requestID, _payload = payload, _receivedAt = receivedAt)
+    this(_locator = Some(_locator), _URI = URI, _ID = ID, _requestID = requestID, _payload = payload, _createdAt = createdAt)
 
 }
 
@@ -105,7 +105,7 @@ object Task {
     ID: java.util.UUID = java.util.UUID.randomUUID
   , requestID: Option[String] = None
   , payload: scala.xml.Elem = null
-  , receivedAt: org.joda.time.DateTime = org.joda.time.DateTime.now
+  , createdAt: org.joda.time.DateTime = org.joda.time.DateTime.now
   ) = {
     new Task(
       _locator = None
@@ -113,7 +113,7 @@ object Task {
     , _ID = ID
     , _requestID = requestID
     , _payload = payload
-    , _receivedAt = receivedAt)
+    , _createdAt = createdAt)
   }
 
   private[Model] def buildInternal(_locator: IServiceLocator
@@ -121,12 +121,12 @@ object Task {
     , ID: java.util.UUID
     , requestID: Option[String]
     , payload: scala.xml.Elem
-    , receivedAt: org.joda.time.DateTime) =
+    , createdAt: org.joda.time.DateTime) =
     new Task(
       _locator = Some(_locator)
     , _URI = URI
     , _ID = ID
     , _requestID = requestID
     , _payload = payload
-    , _receivedAt = receivedAt)
+    , _createdAt = createdAt)
 }
