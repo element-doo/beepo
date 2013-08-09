@@ -13,6 +13,7 @@ object Core extends Build with BuildHelper {
     , jetty
     , jettyOrbit
     , liftWebkit
+    , Model.servicesPlus
     )
     settings(Seq(
         scanDirectories in Compile := Nil
