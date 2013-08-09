@@ -38,7 +38,7 @@ object Default {
   import com.typesafe.sbteclipse.plugin.EclipsePlugin
   import EclipsePlugin.{ EclipseKeys, EclipseProjectFlavor }
 
-  val Name = "Bepo"
+  val Name = "Beepo"
 
   lazy val javaProject =
     EclipsePlugin.settings ++ Seq(

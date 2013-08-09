@@ -1,6 +1,10 @@
 import sbt._
 
 object Dependencies {
+  // DSL
+  val ngsCore        = "hr.ngs" %% "ngs-core"       % "0.3.16-1"
+  val ngsUtil        = "hr.ngs" %% "ngs-util"       % "0.3.16-1"
+
   // Web
   private val liftVersion = "2.5.1"
   val liftCommon = "net.liftweb"       %% "lift-common"  % liftVersion

@@ -1,4 +1,4 @@
-module Bepo
+module Model
 {
   root Task(ID)
   {
