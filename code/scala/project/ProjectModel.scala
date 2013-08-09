@@ -29,7 +29,8 @@ object Model extends Build with BuildHelper {
   lazy val servicesPlus = (
     project("Model-Services-Plus")
     inject(
-      Model.interfacesPlus
+      commonsCodec
+    , Model.interfacesPlus
     , Model.servicesGenerated
     )
   )
