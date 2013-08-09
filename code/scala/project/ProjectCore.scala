@@ -14,6 +14,7 @@ object Core extends Build with BuildHelper {
     , jettyOrbit
     , liftWebkit
     , Model.servicesPlus
+    , Multicast.root
     )
     settings(Seq(
         scanDirectories in Compile := Nil
